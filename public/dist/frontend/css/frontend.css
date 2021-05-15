@@ -1,0 +1,25 @@
+.header-nav.stricky{z-index:1000;position:fixed;top:0;margin-left:0;right:0;left:0}.dropdown-content{min-height:100px}.bravo_user_profile_form .profile-social .form-control{padding:0}section{padding:160px 0}.grid_list_search_result .right_area ul li:last-child .dropdown.bootstrap-select.show-tick,.grid_list_search_result .right_area ul li:last-child button.btn.dropdown-toggle{width:130px}
+
+.login-form-main .card{
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 250px;
+    width: auto;
+}
+
+
+.login-form-main button{
+    background: #00b4a2;
+    border-color: #00b4a2;
+    transition: 0.5s all ease-in-out;
+}
+
+.login-form-main button:hover{
+    border-color: #00b4a2;
+    color: #00b4a2;
+    background: transparent;
+}
+
+.login-form-main label{
+    font-size: 16px;
+}
