@@ -99,7 +99,7 @@ class PropertyController extends Controller
 
         $data = [
             'row'            => $row,
-        //   'property_location'  => $this->location::where('status', 'publish')->get()->toTree(),
+            'property_location'  => $this->location::where('status', 'publish')->get()->toTree(),
             'breadcrumbs'    => [
                 [
                     'name' => __('Hotels'),

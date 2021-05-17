@@ -1,11 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-
-
-
-
-
     <div class="page-title-area ptb-100">
         <div class="container">
             <div class="page-title-content">
@@ -21,7 +16,6 @@
         </div>
     </div>
 
-
     <section id="top-destination" class="top-destination-section pt-100 pb-70 bg-light">
         <div class="container">
             <div class="section-title">
@@ -29,9 +23,7 @@
                 <p>Travel has helped us to understand the meaning of life and it has helped us become better people. Each time we travel, we see the world with new eyes.</p>
             </div>
             <div class="row">
-
                 @foreach ($tours as $tour)
-
                 <div class="col-lg-4 col-md-6">
 
                     <div class="item-single mb-30">
@@ -54,18 +46,11 @@
                         </div>
                         <div class="spacer"></div>
                     </div>
-
-
                 </div>
-
                 @endforeach
-
-
             </div>
         </div>
     </section>
-
-
 @endsection
 
 

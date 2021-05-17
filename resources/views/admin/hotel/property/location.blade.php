@@ -36,10 +36,10 @@
                     <div class="">
                         <select name="location_id" class="form-control">
                             <option value="">{{__("-- Please Select --")}}</option>
-                                @foreach(get_country_lists() as $id=>$name)
-                                    {{dd($id)}}
-                                    <option @if((old('country',$user->country ?? '')) == $id) selected @endif value="{{$id}}">{{$name}}</option>
-                                @endforeach
+                            @foreach ($locations as $location)
+
+                                <option value="{{ $location->name }}"> {{ $location->name }}  </option>
+                            @endforeach
                         </select>
                     </div>
                 @endif

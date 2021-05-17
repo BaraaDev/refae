@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div class="page-title-area ptb-100">
         <div class="container">
             <div class="page-title-content">
@@ -18,7 +16,6 @@
             <img src="{{ asset('images/destination-details.jpg') }}" alt="Demo Image">
         </div>
     </div>
-
 
     <section class="destinations-details-section pt-100 pb-70">
         <div class="container">
@@ -39,10 +36,7 @@
                             </div>
                         </div>
                         <div class="content mb-20">
-                             <p>
-                                {!! $tour->content !!}
-                            </p>
-
+                             {!! $tour->content !!}
                         </div>
 
                         <div class="info-content">
@@ -73,10 +67,8 @@
                                         <h6><span>Views  :</span>  {{ $tour->views }}</h6>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
@@ -86,7 +78,6 @@
                     <input type="hidden" id="type" value="tour">
 
                     <aside class="widget-area">
-
                         @if($tour->video)
                         <div class="widget widget-video mb-30">
                             <div class="video-image">
@@ -101,12 +92,9 @@
                         @php  $tours = App\Models\Tours::where('id', '!=', $tour->id)->take(3)->get();  @endphp
 
                         @if($tours->count() > 0)
-
                         <div class="widget widget-article mb-30">
                             <h3 class="sub-title">Popular Tours</h3>
-
                             @foreach ($tours as $item)
-
                             <article class="article-item">
                                 <div class="image">
                                     <img src="{{ asset('images/' . $item->image_id) }}" alt="Demo Image" />
@@ -121,9 +109,7 @@
                                     </ul>
                                 </div>
                             </article>
-
                             @endforeach
-
                         </div>
                         @endif
 
@@ -132,24 +118,17 @@
                         <div class="widget widget-gallery mb-30">
                             <h3 class="sub-title">Gallery</h3>
                             <ul class="instagram-post">
-
                                 @foreach (explode(',', $tour->gallery) as $photo)
                                 <li>
                                     <img src="{{ asset('images/'. $photo )}}" alt="Demo Image">
                                  </li>
                                 @endforeach
-
-
                             </ul>
                         </div>
-
                         @endif
-
                     </aside>
                 </div>
             </div>
         </div>
     </section>
-
-
 @endsection

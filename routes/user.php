@@ -16,11 +16,6 @@ Auth::routes(['verify' => true]);
     Route::post('/profile/change-password-post','UserController@changePasswordPost')->name("change_password_post");
     Route::get('/booking-history','UserController@bookingHistory')->name("user.booking_history");
 
-    Route::post('/wishlist','UserWishListController@handleWishList')->name("wishList.handle");
-
-    Route::get('/wishlist','UserWishListController@index')->name("wishList.index");
-
-    Route::get('/wishlist/remove','UserWishListController@remove')->name("wishList.remove");
 
     Route::get('orders','UserController@orders')->name("orders");
 

@@ -10,6 +10,7 @@
 
     class Location extends BaseModel
     {
+        use NodeTrait;
 
         protected $table         = 'locations';
         protected $fillable      = [

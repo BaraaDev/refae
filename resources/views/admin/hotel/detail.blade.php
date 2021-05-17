@@ -22,7 +22,6 @@
 
             @include('admin.message')
 
-
             <div class="lang-content-box">
                 <div class="row">
                     <div class="col-md-9">

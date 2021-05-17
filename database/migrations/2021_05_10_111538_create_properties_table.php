@@ -31,6 +31,7 @@ class CreatePropertiesTable extends Migration
             $table->string('image_id');
             $table->string('slug');
             $table->string('create_user');
+            $table->string('update_user')->nullable();
             $table->string('views')->default('1');
             $table->timestamps();
         });

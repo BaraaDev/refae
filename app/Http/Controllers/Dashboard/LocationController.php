@@ -47,7 +47,7 @@ class LocationController extends Controller
             $row->slug = $request->input('slug');
         }
 
-        dd($request);
+
         return back()->with('success', __('Location created') );
     }
 
