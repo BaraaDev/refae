@@ -1,4 +1,4 @@
- <?php
+<?php
 
 
     Route::get('tour/{id}', 'HomeController@tour')->name('tour');
@@ -19,42 +19,40 @@
 
     Auth::routes();
 
-    // Route::post('login','UserController@userLogin')->name('login');
-    // Route::get('login','UserController@userLogin')->name('login');
 
    Route::get('user.profile.index','UserController@profile')->name('user.profile.index');
 
 
-Route::post('register','UserController@userRegister')->name('auth.register');
+    Route::post('register','UserController@userRegister')->name('auth.register');
 
-Route::post('logout','UserController@logout')->name('auth.logout');
-
-
- Route::get('contact', function () {
-
-   return view('contact');
-
- })->name('contact');
-
- Route::get('about', function () {
-
-   return view('about');
-
- })->name('about');
-
-  Route::match(['post'],'/contact/store','ContactController@store')->name("contact.store");
-
-  Route::get('news','HomeController@news')->name('news');
-
-  Route::get('blog/{id}','HomeController@blog')->name('blog');
-
-  Route::get('hotels','HomeController@hotels')->name('hotels');
-  Route::get('tours','HomeController@tours')->name('tours');
-  Route::get('matches','HomeController@matches')->name('matches');
-
-  Route::post('/doCheckout','PaymentController@doCheckout')->name('doCheckout')->middleware(['auth']);
+    Route::post('logout','UserController@logout')->name('auth.logout');
 
 
-  Route::get('paypal/checkout/{order}', 'PayPalController@getExpressCheckout')->name('paypal.checkout');
-  Route::get('paypal/checkout-success/{order}', 'PayPalController@getExpressCheckoutSuccess')->name('paypal.success');
-  Route::get('paypal/checkout-cancel', 'PayPalController@cancelPage')->name('paypal.cancel');
+     Route::get('contact', function () {
+
+       return view('contact');
+
+     })->name('contact');
+
+     Route::get('about', function () {
+
+       return view('about');
+
+     })->name('about');
+
+      Route::match(['post'],'/contact/store','ContactController@store')->name("contact.store");
+
+      Route::get('news','HomeController@news')->name('news');
+
+      Route::get('blog/{id}','HomeController@blog')->name('blog');
+
+      Route::get('hotels','HomeController@hotels')->name('hotels');
+      Route::get('tours','HomeController@tours')->name('tours');
+      Route::get('matches','HomeController@matches')->name('matches');
+
+      Route::post('/doCheckout','PaymentController@doCheckout')->name('doCheckout')->middleware(['auth']);
+
+
+      Route::get('paypal/checkout/{order}', 'PayPalController@getExpressCheckout')->name('paypal.checkout');
+      Route::get('paypal/checkout-success/{order}', 'PayPalController@getExpressCheckoutSuccess')->name('paypal.success');
+      Route::get('paypal/checkout-cancel', 'PayPalController@cancelPage')->name('paypal.cancel');

@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-
+@section('title')
+    Add new match |
+@endsection
 @section('content')
 
     <form action="{{route('dashboard.matches.store')}}" method="post" enctype="multipart/form-data">

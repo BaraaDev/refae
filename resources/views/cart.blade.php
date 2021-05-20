@@ -38,6 +38,7 @@
                                 @csrf
 
                                 @foreach ($items as $item)
+
                                 <tr class="product-row">
                                     <td class="product-col">
                                         <figure class="product-image-container">
@@ -97,7 +98,5 @@
             </div>
         </div>
     </section>
-
-
 
 @endsection

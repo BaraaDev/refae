@@ -26,7 +26,7 @@
         "paypal/paypal-checkout-sdk": "1.0.1",
         "propaganistas/laravel-phone": "^4.2",
         "simplesoftwareio/simple-qrcode": "^2.0",
-        "spatie/laravel-image-optimizer": "^1.4",
+        "spatie/laravel-image-optimizer": "^1.6",
         "spatie/laravel-permission": "^4.0",
         "tymon/jwt-auth": "^1.0"
     },

@@ -46,7 +46,7 @@ class LoginController extends Controller
     {
         if(Auth::user()->rolez_id == 1){
 
-            return '/dashboard/home';
+            return '/dashboard';
 
         }else{
             return $this->redirectTo;

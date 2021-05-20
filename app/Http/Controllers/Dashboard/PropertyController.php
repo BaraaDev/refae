@@ -12,17 +12,18 @@ use App\Models\Property;
 use App\Models\PropertyTerm;
 use App\Models\PropertyCategory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PropertyController extends Controller
 {
     protected $property;
-    protected $location;
+    protected $locations;
 
 
     public function __construct()
     {
         $this->property = Property::class;
-        $this->location = Location::class;
+        $this->locations = Location::class;
         $this->propertyCategoryClass = PropertyCategory::class;
     }
 
@@ -95,11 +96,12 @@ class PropertyController extends Controller
 
         $row = $this->property::findOrFail($id);
 
-
+        Log::error('An informational message.'.$id);
 
         $data = [
             'row'            => $row,
-            'property_location'  => $this->location::where('status', 'publish')->get()->toTree(),
+            'property_location'  => $this->locations::where('status', 'publish')->get()->toTree(),
+            'locations' =>  Location::all(),
             'breadcrumbs'    => [
                 [
                     'name' => __('Hotels'),

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Route;
+
 Auth::routes(['verify' => true]);
 
 
@@ -18,14 +19,6 @@ Auth::routes(['verify' => true]);
 
 
     Route::get('orders','UserController@orders')->name("orders");
-
-    Route::group(['prefix'=>'/booking'],function(){
-        Route::get('{code}/invoice','BookingController@bookingInvoice')->name('user.booking.invoice');
-        Route::get('{code}/ticket','BookingController@ticket')->name('user.booking.ticket');
-    });
-
-
-
 });
 
 

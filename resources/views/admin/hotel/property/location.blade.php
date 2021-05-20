@@ -5,6 +5,7 @@
             <div class="form-group">
                 <label class="control-label">{{__("Location")}}</label>
                 @if(!empty($is_smart_search))
+                    {{\Illuminate\Support\Facades\Log::alert($locations)}}
                     <div class="form-group-smart-search">
                         <div class="form-content">
                             <?php
@@ -12,13 +13,14 @@
                             $list_json = [];
                             $traverse = function ($locations, $prefix = '') use (&$traverse, &$list_json , &$location_name,$row) {
                                 foreach ($locations as $location) {
-                                    $translate = $location->translateOrOrigin(app()->getLocale());
+
+                                     $translate = $location->translateOrOrigin(app()->getLocale());
                                     if ($row->location_id == $location->id){
                                         $location_name = $translate->name;
                                     }
                                     $list_json[] = [
                                         'id' => $location->id,
-                                        'title' => $prefix . ' ' . $translate->name,
+                                        'title'  => $prefix . ' ' . $translate->name,
                                     ];
                                     $traverse($location->children, $prefix . '-');
                                 }
@@ -36,10 +38,12 @@
                     <div class="">
                         <select name="location_id" class="form-control">
                             <option value="">{{__("-- Please Select --")}}</option>
+
                             @foreach ($locations as $location)
 
                                 <option value="{{ $location->name }}"> {{ $location->name }}  </option>
                             @endforeach
+
                         </select>
                     </div>
                 @endif

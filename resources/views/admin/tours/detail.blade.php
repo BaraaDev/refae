@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-
+@section('title')
+    Add new property |
+@endsection
 @section('content')
 
     <form action="{{route('dashboard.hotel.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post" enctype="multipart/form-data">
@@ -22,7 +24,7 @@
 
             @include('admin.message')
 
- 
+
             <div class="lang-content-box">
                 <div class="row">
                     <div class="col-md-9">
@@ -49,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
- 
+
 
                         @if(is_default_lang())
                             <div class="panel">

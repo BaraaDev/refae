@@ -1,14 +1,11 @@
 <?php
 // Admin Route
 
-Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function() {
+Route::prefix('dashboard')->name('dashboard.')->middleware(['auth','dashboard','UserStatus'])->group(function() {
 
      Route::get('/', 'AdminController@index')->name('home');
-
-
      //  Properties
     Route::group(['prefix'=>'hotel'],function (){
-
         Route::get('/','PropertyController@index')->name('hotel.index');
         Route::get('/create','PropertyController@create')->name('hotel.create');
         Route::get('/edit/{id}','PropertyController@edit')->name('hotel.edit');
@@ -29,29 +26,26 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     Route::post('matches/bulkEdit','MatchesController@bulkEdit')->name('matches.bulkEdit');
 
 
-     Route::resource('location', 'LocationController');
+    Route::resource('location', 'LocationController');
 
+    // Users Routes
 
+    Route::group(['prefix'=>'users'],function (){
 
+        Route::get('/getForSelect2','UserController@getForSelect2')->name('getForSelect2');
 
+        Route::get('/','UserController@index')->name('user.index');
 
-// Users Routes
+        Route::get('/create','UserController@create')->name('user.create');
+        Route::get('/edit/{id}','UserController@edit')->name('user.edit');
+        Route::post('/store/{id}','UserController@store')->name('user.store');
+        Route::post('/bulkEdit','UserController@bulkEdit')->name('user.bulkEdit');
 
-Route::group(['prefix'=>'user'],function (){
+        Route::get('/password/{id}','UserController@password')->name('user.password');
+        Route::post('/change-pass/{id}','UserController@changepass')->name('user.change_pass');
 
-    Route::get('/getForSelect2','UserController@getForSelect2')->name('getForSelect2');
+    });
 
-    Route::get('/','UserController@index')->name('user.index');
-
-    Route::get('/create','UserController@create')->name('user.create');
-    Route::get('/edit/{id}','UserController@edit')->name('user.edit');
-    Route::post('/store/{id}','UserController@store')->name('user.store');
-    Route::post('/bulkEdit','UserController@bulkEdit')->name('user.bulkEdit');
-    Route::get('/password/{id}','UserController@password')->name('user.password');
-    Route::post('/changepass/{id}','UserController@changepass')->name('user.changepass');
-
-});
-
- Route::resource('orders', 'OrdersController');
+    Route::resource('orders', 'OrdersController');
 
 });

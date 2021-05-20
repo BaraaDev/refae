@@ -8,17 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Auth;
+
 class UserController extends Controller
 {
-
-
 
     public function index(Request $request)
     {
 
         $username = $request->query('s');
 
-        $listUser = User::query()->where('rolez_id', '=', 4)->orderBy('id','desc');
+        $listUser = User::orderBy('id','desc');
 
         if (!empty($username)) {
 
@@ -32,7 +31,7 @@ class UserController extends Controller
         }
 
         $data = [
-            'rows' => $listUser->paginate(20),
+            'rows' => $listUser->paginate(10),
         ];
 
         return view('admin.users.index', $data);
@@ -60,14 +59,14 @@ class UserController extends Controller
         $row = User::findOrFail($id);
 
         $data = [
-            'row'   => $row,
-            'breadcrumbs'=>[
+            'row'         => $row,
+            'breadcrumbs' => [
                 [
-                    'name'=>__("Users"),
-                    'url'=>'dashboard/users'
+                    'name'  => __("Users"),
+                    'url'   => 'dashboard/users'
                 ],
                 [
-                    'name'=>__("Edit User: #:id",['id'=>$row->id]),
+                    'name'  => __("Edit User: #:id",['id'=>$row->id]),
                     'class' => 'active'
                 ],
             ]
@@ -81,70 +80,51 @@ class UserController extends Controller
         $row = User::findOrFail($id);
 
         $data  = [
-            'row'=>$row,
-            'currentUser'=>Auth::user()
+            'row'         => $row,
+            'currentUser' => Auth::user()
         ];
-
 
         return view('admin.users.password',$data);
     }
 
     public function changepass(Request $request, $id)
     {
-
-
         $urow = User::findOrFail($id);
-
-        $request->validate([
-            'password'              => 'required|min:6|max:255|confirmed',
-        ]);
-
+        $request->validate(['password' => 'required|min:6|max:255|confirmed',]);
 
         $password = $request->input('password');
-
-
         $urow->password = bcrypt($password);
 
         if ($urow->save()) {
-
             return redirect()->back()->with('success', __('Password updated!'));
         }
     }
 
     public function store(Request $request, $id)
     {
-
         $file = $request->file('file');
 
         if($id and $id>0){
-
             $row = User::findOrFail($id);
 
-
-
             $request->validate([
-                'first_name'              => 'required|max:255',
-                'last_name'              => 'required|max:255',
-                'status'              => 'required|max:50',
+                'first_name'         => 'required|max:255',
+                'last_name'          => 'required|max:255',
+                'status'             => 'required|max:50',
                 'phone'              => 'required',
-                'country'              => 'required',
-                'email'              =>[
-                    'required',
-                    'email',
-                    'max:255',
-                    Rule::unique('users')->ignore($row->id)
-                ],
+                'country'            => 'required',
+                'email'              => [
+                                        'required',
+                                        'email',
+                                        'max:255',
+                                        Rule::unique('users')->ignore($row->id)]
+                ,
             ]);
 
-
             if($file){
-
                 $fileName = $file->getClientOriginalName();
-
                 $fileName = uniqid() . $fileName;
-
                 $file->move('images/', $fileName);
-
                 $row->avatar = $fileName;
 
            }else{
@@ -155,20 +135,18 @@ class UserController extends Controller
         }else{
 
             $check = Validator::make($request->input(),[
-                'first_name'              => 'required|max:255',
-                'last_name'              => 'required|max:255',
-                'status'              => 'required|max:50',
-                'phone'              => 'required',
+                'first_name'           => 'required|max:255',
+                'last_name'            => 'required|max:255',
+                'status'               => 'required|max:50',
+                'phone'                => 'required',
                 'country'              => 'required',
-                'email'              =>[
-                    'required',
-                    'email',
-                    'max:255',
-                    Rule::unique('users')
-                ],
+                'email'                =>[
+                                           'required',
+                                           'email',
+                                           'max:255',
+                                            Rule::unique('users')]
+                ,
             ]);
-
-
 
             if(!$check->validated()){
                 return back()->withInput($request->input());
@@ -180,36 +158,28 @@ class UserController extends Controller
             if($file){
 
                 $fileName = $file->getClientOriginalName();
-
                 $fileName = uniqid() . $fileName;
-
                 $file->move('images/', $fileName);
-
                 $row->avatar = $fileName;
-
            }
         }
 
-
-
-        $row->name = $request->input('name');
-        $row->first_name = $request->input('first_name');
-        $row->last_name = $request->input('last_name');
-        $row->phone = $request->input('phone');
-        $row->birthday = $request->input('birthday');
-        $row->address = $request->input('address');
-        $row->address2 = $request->input('address2');
-        $row->bio =  $request->input('bio') ;
-        $row->status = $request->input('status');
-        $row->email = $request->input('email');
-        $row->country = $request->input('country');
-        $row->city = $request->input('city');
-        $row->state = $request->input('state');
-        $row->zip_code = $request->input('zip_code');
+        $row->name          = $request->input('name');
+        $row->first_name    = $request->input('first_name');
+        $row->last_name     = $request->input('last_name');
+        $row->phone         = $request->input('phone');
+        $row->birthday      = $request->input('birthday');
+        $row->address       = $request->input('address');
+        $row->address2      = $request->input('address2');
+        $row->bio           =  $request->input('bio') ;
+        $row->status        = $request->input('status');
+        $row->email         = $request->input('email');
+        $row->country       = $request->input('country');
+        $row->city          = $request->input('city');
+        $row->state         = $request->input('state');
+        $row->zip_code      = $request->input('zip_code');
         $row->business_name = $request->input('business_name');
-        $row->rolez_id =4;
-
-
+        $row->rolez_id      = $request->input('rolez_id');
 
         if ($row->save()) {
 
@@ -217,13 +187,10 @@ class UserController extends Controller
         }
     }
 
-
-
     public function bulkEdit(Request $request)
     {
 
         $ids = $request->input('ids');
-
         $action = $request->input('action');
 
         if (empty($ids))
@@ -235,13 +202,10 @@ class UserController extends Controller
             return redirect()->back()->with('error', __('Select an Action!'));
 
         if ($action == 'delete') {
-
             foreach ($ids as $id) {
-
                 $query = User::where("id", $id)->first();
 
                 if(!empty($query)){
-
                     $query->email.='_d_'.uniqid().rand(0,99999);
                     $query->save();
                     $query->delete();

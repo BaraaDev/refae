@@ -1,4 +1,7 @@
 @extends('admin.layouts.app')
+@section('title')
+    All hotel |
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">

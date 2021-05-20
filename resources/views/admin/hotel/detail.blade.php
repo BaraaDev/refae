@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-
+@section('title')
+    Add new hotel |
+@endsection
 @section('content')
 
     <form action="{{route('dashboard.hotel.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post" enctype="multipart/form-data">

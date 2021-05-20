@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Order extends Model
 {
     protected $guarded = [];
-
+    //use NodeTrait;
 
 
     public function user()

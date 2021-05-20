@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration
             $table->integer('vendor_commission_amount')->nullable();
             $table->string('vendor_commission_type',30)->nullable();
             $table->string('locale',10)->nullable();
-            $table->string('rolez_id',10)->nullable();
+            $table->string('rolez_id')->nullable();
 
             $table->text('user_social')->nullable();
             $table->decimal('review_score',2,1)->nullable();

@@ -27,7 +27,7 @@ class PaymentController extends Controller
 
         ]);
 
-        /*dd($order->id,
+       /* dd($order->id,
            $request->product_id,
            $request->quantity,
            $request->price,

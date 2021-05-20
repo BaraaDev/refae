@@ -27,9 +27,6 @@ class NewsController extends Controller
             $dataNews->orderBy('title', 'asc');
         }
 
-
-
-
         $data = [
             'rows'        => $dataNews->with("getAuthor")->paginate(20),
             'breadcrumbs' => [

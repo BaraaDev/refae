@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-
+@section('title')
+    Edit match {{ $row->title }} |
+@endsection
 @section('content')
 
     <form action="{{route('dashboard.matches.update', $row->id)}}" method="post" enctype="multipart/form-data">

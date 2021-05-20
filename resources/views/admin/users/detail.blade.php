@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
-
+@section('title')
+    Add new user |
+@endsection
 @section('content')
     <form action="{{route('dashboard.user.store', ($row->id ?? -1))}}" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
         @csrf
@@ -90,6 +92,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>{{__("Roles Id")}}</label>
+                                        <input type="text" value="{{old('rolez_id',$row->rolez_id)}}" name="rolez_id" placeholder="{{__("Roles Id")}}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>{{__("Zip Code")}}</label>
                                         <input type="text" value="{{old('zip_code',$row->zip_code)}}" name="zip_code" placeholder="{{__("Zip Code")}}" class="form-control">
                                     </div>
@@ -102,6 +110,7 @@
                                     <textarea name="bio" class="d-none has-ckeditor" cols="30" rows="10">{{old('bio',$row->bio)}}</textarea>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -20,9 +20,6 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $nameuserspace = 'App\Http\Controllers\User';
 
-    protected $namevendorspace = 'App\Http\Controllers\Vendor';
-
-    protected $nameagentspace = 'App\Http\Controllers\Agent';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -48,10 +45,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapUserRoutes();
-
-        $this->mapVendorRoutes();
-
-        $this->mapAgentRoutes();
 
         $this->mapLanguageRoutes();
 
@@ -86,27 +79,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapVendorRoutes()
-    {
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => $this->namevendorspace,
-        ], function ($router) {
-            require base_path('routes/vendor.php');
-        });
 
-    }
-
-    protected function mapAgentRoutes()
-    {
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => $this->nameagentspace,
-        ], function ($router) {
-            require base_path('routes/agent.php');
-        });
-
-    }
 
     protected function mapWebRoutes()
     {

@@ -70,18 +70,15 @@ class Kernel extends HttpKernel
         'Admin' => \App\Http\Middleware\Admin::class,
         'User' => \App\Http\Middleware\User::class,
         'Agency' => \App\Http\Middleware\Agency::class,
+        'UserStatus' => \App\Http\Middleware\UserStatus::class,
 
 
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
-
         "dashboard" => \App\Http\Middleware\Dashboard::class,
         "translation_manager" => \App\Http\Middleware\TranslationManager::class,
-
         "system_log_view" => \App\Http\Middleware\CheckForLogPermission::class,
-
-        "set_language_for_api" => \App\Http\Middleware\SetLanguageForApi::class,
     ];
 
     /**

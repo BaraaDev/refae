@@ -17,8 +17,9 @@ class UsersTableSeeder extends Seeder
             'phone'       => '112 666 888',
             'status'      => 'publish',
             'email_verified_at' => '2020-09-06 00:00:00',
+            'rolez_id'    => '1',
             'created_at'  =>  date("Y-m-d H:i:s"),
-          //  'avatar_id'   => MediaFile::findMediaByName("avatar")->id,
+            'avatar_id'   =>  DB::table('media_files')->insert(['file_name' => 'avatar', 'file_path' => 'demo/general/avatar.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg']),
             'bio'         => 'We\'re designers who have fallen in love with creating spaces for others to reflect, reset, and create. We split our time between two deserts (the Mojave, and the Sonoran). We love the way the heat sinks into our bones, the vibrant sunsets, and the wildlife we get to call our neighbors.',
             'user_social' => '[{"title":"facebook","code":"fa fa-facebook","link":"#"},{"title":"twitter","code":"fa fa-twitter","link":"#"}]'
         ]);

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <form action="{{url('admin/module/user/changepass/'.$row->id)}}" method="post">
+    <form action="{{url('dashboard/users/change-pass',$row->id)}}" method="post">
         @csrf
         <div class="container">
             <div class="d-flex justify-content-between mb20">
