@@ -96,7 +96,7 @@ class PropertyController extends Controller
 
         $row = $this->property::findOrFail($id);
 
-        Log::error('An informational message.'.$id);
+
 
         $data = [
             'row'            => $row,

@@ -53,17 +53,16 @@
                         <div class="side-option">
 
 
-             @if(Auth::check())
+            @if(Auth::check())
 
-             @if (Auth::user()->rolez_id == 1)
+            @if (Auth::user()->rolez_id == 1)
 
-             <a  href="{{ route('dashboard.home') }}" style="color: #fff;border: 1px solid #fff;padding: 8px 18px;margin: 6px 9px;" href="btn-secondary"> My Profile </a>
+             <a href="{{ route('dashboard.home') }}" style="color: #fff;border: 1px solid #fff;padding: 8px 18px;margin: 6px 9px;" href="btn-secondary"> Dashboard  </a>
+             <a href="{{ route('user.profile.index') }}" style="color: #fff;border: 1px solid #fff;padding: 8px 18px;margin: 6px 9px;" href="btn-secondary"> My Profile </a>
+            @else
 
-             @else
-
-             <a  href="{{ route('user.profile.index') }}" style="color: #fff;border: 1px solid #fff;padding: 8px 18px;margin: 6px 9px;" href="btn-secondary"> My Profile </a>
-             @endif
-
+             <a href="{{ route('user.profile.index') }}" style="color: #fff;border: 1px solid #fff;padding: 8px 18px;margin: 6px 9px;" href="btn-secondary"> My Profile </a>
+            @endif
 
             <form id="logout-form-vendor" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
